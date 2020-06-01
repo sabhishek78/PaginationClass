@@ -1,13 +1,13 @@
 class Pagination{
   constructor(items,pageSize){
-    this.items=items;
-    this.pageSize=pageSize;
-    this.currentPage=0;
-    this.itemArray=this.distributeItems(this.items,this.pageSize);
+    this.items=items||[];
+    this.pageSize=pageSize||1;
+    this.currentPage=0||0;
+    this.itemArray=this.distributeItems(this.items,this.pageSize)||[];
   }
   distributeItems(items,pageSize){
     let itemArray=[];
-    let copyOfItems=items;
+    let copyOfItems=[...items];
     for(let i=0;i<copyOfItems.length;i++){
       let temp=[];
       temp=copyOfItems.splice(0,pageSize);
@@ -44,24 +44,24 @@ class Pagination{
     return this;
   }
   goToPage(pageNumber){
-    this.currentPage=pageNumber-1;
+    this.currentPage=pageNumber;
     return this;
   }
 }
 const alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
 const p = new Pagination(alphabetArray, 4);
-// p.printItemArray();
-// p.getVisibleItems();
-//  p.nextPage();
-// p.getVisibleItems();
-// p.previousPage();
-// p.getVisibleItems();
-// p.firstPage();
-// p.getVisibleItems();
-// p.lastPage();
-// p.getVisibleItems();
-// p.goToPage(5);
-// p.getVisibleItems();
+p.printItemArray();
+p.getVisibleItems();
+ p.nextPage();
+p.getVisibleItems();
+p.previousPage();
+p.getVisibleItems();
+p.firstPage();
+p.getVisibleItems();
+p.lastPage();
+p.getVisibleItems();
+p.goToPage(5);
+p.getVisibleItems();
  p.firstPage();
 p.getVisibleItems();
 p.nextPage().nextPage();
